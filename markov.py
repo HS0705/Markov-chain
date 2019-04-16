@@ -43,52 +43,25 @@ def make_chains(text_string):
         [None]
     """
 
+    
     chains = {}
 
 
     # your code goes here
     words_list = text_string.split()
     words_list.append(None)
-    print(words_list)
-    i = 0
+    #print(words_list)
+
 
     for word in range(0,len(words_list)-2):
         bi_word = (words_list[word], words_list[word+1])
-        if bi_word in chains:
-            chains[bi_word] = words_list[2]
-        else:
-            chains[bi_word] = chains.get(bi_word, [words_list[2]])
 
-    
-    # for bi_word in chains:
-    #     if bi_word == words_list[word] + ',' + words_list[word+1]:
-    #         print('hi')
+        chains[bi_word] = chains.get(bi_word,[])+ [words_list[word+2]]
+    return chains
 
 
 
-
-
-            # chains[bi_word] = words_list[bi_word[1]+1]
-
-
-        #search bi word in the text and pick up the word after it and add it to the list of values for the key
-
-
-        # [words_list[word +2]])
-
-     
-     # for each bi_word, we need to assign
-     # the value that followed the bi_word
-
-     # for bi_word in chains:
         
-
-
-
-
-
-   
-
 
 def make_text(chains):
     """Return text from chains."""
