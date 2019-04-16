@@ -12,64 +12,70 @@ def open_and_read_file(file_path):
 
     # your code goes here
     opened_file = open(file_path)
-    read_file = opened_file.read()
+    text_string = opened_file.read()
 
-    print(read_file)
-
-open_and_read_file("green-eggs.txt")
+    return(text_string)
 
 
-# def make_chains(text_string):
-#     """Take input text as string; return dictionary of Markov chains.
 
-#     A chain will be a key that consists of a tuple of (word1, word2)
-#     and the value would be a list of the word(s) that follow those two
-#     words in the input text.
+def make_chains(text_string):
+    """Take input text as string; return dictionary of Markov chains.
 
-#     For example:
+    A chain will be a key that consists of a tuple of (word1, word2)
+    and the value would be a list of the word(s) that follow those two
+    words in the input text.
 
-#         >>> chains = make_chains("hi there mary hi there juanita")
+    For example:
 
-#     Each bigram (except the last) will be a key in chains:
+        >>> chains = make_chains("hi there mary hi there juanita")
 
-#         >>> sorted(chains.keys())
-#         [('hi', 'there'), ('mary', 'hi'), ('there', 'mary')]
+    Each bigram (except the last) will be a key in chains:
 
-#     Each item in chains is a list of all possible following words:
+        >>> sorted(chains.keys())
+        [('hi', 'there'), ('mary', 'hi'), ('there', 'mary')]
 
-#         >>> chains[('hi', 'there')]
-#         ['mary', 'juanita']
+    Each item in chains is a list of all possible following words:
+
+        >>> chains[('hi', 'there')]
+        ['mary', 'juanita']
         
-#         >>> chains[('there','juanita')]
-#         [None]
-#     """
+        >>> chains[('there','juanita')]
+        [None]
+    """
 
-#     chains = {}
-
-#     # your code goes here
-
-#     return chains
+    chains = {}
 
 
-# def make_text(chains):
-#     """Return text from chains."""
+    # your code goes here
+    words_list = text_string.split()
 
-#     words = []
+    for word in range(0,len(words_list)-1):
+        bi_word = (words_list[word], words_list[word+1])
+        chains[bi_word] = chains.get(bi_word, 0)
 
-#     # your code goes here
+        
+    return chains
 
-#     return " ".join(words)
+
+def make_text(chains):
+    """Return text from chains."""
+
+    words = []
+
+    # your code goes here
+
+    return " ".join(words)
 
 
-# input_path = "green-eggs.txt"
+input_path = "green-eggs.txt"
 
-# # Open the file and turn it into one long string
-# input_text = open_and_read_file(input_path)
+# Open the file and turn it into one long string
+input_text = open_and_read_file(input_path)
 
-# # Get a Markov chain
-# chains = make_chains(input_text)
+# Get a Markov chain
+chains = make_chains(input_text)
 
-# # Produce random text
-# random_text = make_text(chains)
+# Produce random text
+random_text = make_text(chains)
 
-# print(random_text)
+print(random_text)
