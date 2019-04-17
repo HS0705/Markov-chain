@@ -66,11 +66,39 @@ def make_chains(text_string):
 def make_text(chains):
     """Return text from chains."""
 
+    # randomly pick a bi_word
+    # randomly pick a value that applies to the chosen bi_word
+    # search for the bi_word that had the second value of the first chosen bi_and the value
+    # keep repeating lines 1 and 2 until we hit None
+
     words = []
+
 
     # your code goes here
 
-    return " ".join(words)
+
+
+    base_bi_word = choice(list(chains.keys()))
+    words.append(base_bi_word[0]) #unpack the tuple
+    words.append(base_bi_word[1])
+    next_word = choice(chains[base_bi_word])
+    
+    while next_word != None:
+        words.append(next_word)
+        base_bi_word = (words[-2],words[-1])
+        next_word = choice(chains[base_bi_word])
+        
+    # else:
+    #     print("Hi it's done")
+
+
+
+
+
+    return(" ".join(words))
+    
+    
+    # print(" ".join(words))
 
 
 input_path = "green-eggs.txt"
