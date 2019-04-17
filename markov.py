@@ -75,31 +75,33 @@ def make_text(chains):
 
 
     # your code goes here
+    beginning_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    sentence_end = ".!?"
 
 
 
     base_bi_word = choice(list(chains.keys()))
+    while base_bi_word[0][0] not in beginning_letters:
+        base_bi_word = choice(list(chains.keys()))
+        
     words.append(base_bi_word[0]) #unpack the tuple
     words.append(base_bi_word[1])
     next_word = choice(chains[base_bi_word])
+
     
-    while next_word != None:
+    while next_word[-1] not in sentence_end:
         words.append(next_word)
         base_bi_word = (words[-2],words[-1])
         next_word = choice(chains[base_bi_word])
-        
 
-
-
-
-
+    words.append(next_word)
     return(" ".join(words))
-    
+
     
     # print(" ".join(words))
 
 
-input_path = "green-eggs.txt"
+input_path = "Trump_SNL_Trump.txt"
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
