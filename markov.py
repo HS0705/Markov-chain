@@ -101,7 +101,7 @@ def make_text(chains):
     # print(" ".join(words))
 
 
-input_path = "Trump_SNL_Trump.txt"
+input_path = "Newtext.txt"
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
