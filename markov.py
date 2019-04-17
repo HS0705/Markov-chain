@@ -88,8 +88,6 @@ def make_text(chains):
         base_bi_word = (words[-2],words[-1])
         next_word = choice(chains[base_bi_word])
         
-    # else:
-    #     print("Hi it's done")
 
 
 
